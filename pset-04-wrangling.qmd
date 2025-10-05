@@ -240,7 +240,7 @@ deaths_raw <- request(deaths_url) |>
   req_url_query("$limit" = 10000000000) |>
   req_perform() |>
   resp_body_json(simplifyDataFrame = TRUE)
-deaths <- deaths_raw |>
+deaths <- as_tibble(deaths_raw) |>
   filter(group == "By Year", 
          sex == "All Sexes", 
          age_group == "All Ages", 
